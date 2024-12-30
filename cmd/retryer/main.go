@@ -45,7 +45,7 @@ func main() {
 			kafkaReader.Close()
 			return
 		default:
-			err := requestBacklog.HandleRequest(ctx, func(req *http.Request) error {
+			err = requestBacklog.HandleRequest(ctx, func(req *http.Request) error {
 				_, err := http.DefaultClient.Do(req)
 				return err
 			})

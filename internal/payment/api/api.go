@@ -223,7 +223,7 @@ func (api *PaymentsAPI) GetPayment(ctx context.Context, paymentUID string) (mode
 	})
 	if err != nil {
 		api.logger.Warn(err.Error())
-		return models.Payment{}, true, nil
+		return models.Payment{}, true, nil // fallback response
 	}
 
 	return res.item, res.found, nil

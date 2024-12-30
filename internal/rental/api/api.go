@@ -173,7 +173,7 @@ func (api *RentalsAPI) GetUserRentals(ctx context.Context, username string, offs
 	})
 	if err != nil {
 		api.logger.Warn(err.Error())
-		return make([]models.Rental, 0), 0, nil
+		return make([]models.Rental, 0), 0, nil // fallback response
 	}
 
 	return res.items, res.totalCount, nil
@@ -242,7 +242,7 @@ func (api *RentalsAPI) GetUserRental(ctx context.Context, rentalUID, username st
 		return models.Rental{
 			RentalUID:        rentalUID,
 			RentalProperties: models.RentalProperties{Username: username},
-		}, true, false, nil
+		}, true, false, nil // fallback response
 	}
 
 	return res.item, res.found, res.permitted, nil

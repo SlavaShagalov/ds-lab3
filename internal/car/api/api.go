@@ -164,7 +164,7 @@ func (api *CarsAPI) GetCars(ctx context.Context, offset, limit uint64, showAll b
 	})
 	if err != nil {
 		api.logger.Warn(err.Error())
-		return make([]models.Car, 0), 0, nil
+		return make([]models.Car, 0), 0, nil // fallback response
 	}
 
 	return res.items, res.totalCount, nil
@@ -220,7 +220,7 @@ func (api *CarsAPI) GetCar(ctx context.Context, carUID string) (models.Car, bool
 	})
 	if err != nil {
 		api.logger.Warn(err.Error())
-		return models.Car{CarUID: carUID}, true, nil
+		return models.Car{CarUID: carUID}, true, nil // fallback response
 	}
 
 	return res.item, res.found, nil

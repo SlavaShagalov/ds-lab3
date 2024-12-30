@@ -254,7 +254,7 @@ func (gateway *Gateway) startCarRental(ctx *fiber.Ctx) error {
 		DateFrom:   dateFrom,
 		DateTo:     dateTo,
 		Status:     models.RentalInProgress,
-	}) // dto.CarUID, username, dateFrom, dateTo)
+	})
 	if err != nil {
 		return err
 	}
